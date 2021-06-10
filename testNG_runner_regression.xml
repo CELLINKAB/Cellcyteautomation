@@ -1,0 +1,43 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name=" CellCyte Automation">
+
+<listeners>
+
+    <listener class-name="utilities.Listeners"></listener>
+
+</listeners>
+
+
+    <test name="regression test CellCyte">
+
+
+         <classes>
+
+             <class name="tests.RegressionTestLoginConnectPage"></class>
+             <class name="tests.RegressionTestSettingsPage"></class>
+             <class name="tests.RegressionTestSetUpNewStudy"></class>
+             <class name="tests.RegressionTestSetupNewStudyPart2">
+
+                 <methods>
+
+                     <include name="Regression3Step8"></include>
+                     <include name="Regression3Step10"></include>
+                     <include name="Regression3Step11"></include>
+                 </methods>
+             </class>
+             <class name="tests.RegressionTestHomePage"></class>
+             <class name="tests.RegressionTestViewExportImage"></class>
+
+
+
+
+
+         </classes>
+
+
+
+    </test>
+
+
+</suite>

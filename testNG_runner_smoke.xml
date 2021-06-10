@@ -1,0 +1,38 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name=" CellCyte Automation">
+
+<listeners>
+
+    <listener class-name="utilities.Listeners"></listener>
+
+</listeners>
+
+
+    <test name="smoke test CellCyte">
+
+
+         <classes>
+
+             <class name="tests.SmokeTest">
+
+                 <methods>
+
+                     <include name="slots"  ></include>
+                     <include name="studiespageOverwievPage"  ></include>
+                     <include name="Analysis"  ></include>
+                     <include name="ColorChannel"  ></include>
+
+
+                 </methods>
+
+             </class>
+
+
+
+         </classes>
+
+
+    </test>
+
+</suite>
