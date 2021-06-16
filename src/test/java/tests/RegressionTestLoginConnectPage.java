@@ -44,6 +44,8 @@ public class RegressionTestLoginConnectPage extends TestBase {
         loginPage.LoginIn(ConfigurationReader.get("username"), ConfigurationReader.get("password"));
         BrowserUtils.waitFor(2);
 
+
+
         WebElement SeemsUser = Driver.getDriver().findElementByName("Local User");
 
         Assert.assertTrue(SeemsUser.isDisplayed());
@@ -58,7 +60,7 @@ public class RegressionTestLoginConnectPage extends TestBase {
 
 
 
-WebElement DeviceName = Driver.getDriver().findElementByName("Device 1 (C-1911034)");
+WebElement DeviceName = Driver.getDriver().findElementByName("Device 3 (C-1911034)");
     System.out.println(DeviceName.getText());
 Assert.assertTrue(DeviceName.isDisplayed());
 

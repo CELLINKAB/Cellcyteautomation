@@ -99,12 +99,12 @@ public class RegressionTestSetUpNewStudy extends TestBase  {
             BrowserUtils.waitFor(5);
 
             WebElement wholePage = Driver.getDriver().findElementByClassName("DataGrid");
-          //  wholePage.sendKeys(Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB,Keys.PAGE_DOWN,Keys.PAGE_DOWN,Keys.PAGE_DOWN, Keys.PAGE_DOWN,Keys.PAGE_DOWN, Keys.PAGE_DOWN, Keys.PAGE_DOWN, Keys.PAGE_DOWN, Keys.PAGE_DOWN,Keys.PAGE_DOWN, Keys.ENTER);
-            studiesPage.studiesName("Cells 3");
+            wholePage.sendKeys(Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB,Keys.PAGE_DOWN,Keys.PAGE_DOWN, Keys.ENTER);
+            studiesPage.studiesName("96 rgb");
             Driver.getDriver().findElementByName("Copy study settings").click();
 
             System.out.println(Driver.getDriver().findElementByAccessibilityId("NumberOfSelectedClick").getText());
-            Assert.assertTrue(Driver.getDriver().findElementByAccessibilityId("NumberOfSelectedClick").getText().equals("63 / 96 wells selected"));
+            Assert.assertTrue(Driver.getDriver().findElementByAccessibilityId("NumberOfSelectedClick").getText().equals("4 / 96 wells selected"));
 
             homePage.closeButtonOnly();
             homePage.getNoButton();

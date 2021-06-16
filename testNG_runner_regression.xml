@@ -9,7 +9,7 @@
 </listeners>
 
 
-    <test name="regression test CellCyte">
+    <test name="regression testalUser CellCyte">
 
 
          <classes>

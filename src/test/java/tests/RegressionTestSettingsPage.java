@@ -12,7 +12,7 @@ import utilities.Driver;
 
 import java.util.List;
 
-public class RegressionTestSettingsPage extends TestBase{
+public class RegressionTestSettingsPage extends TestBase {
 
     //1 Verify   User should be able to see previously connected device  in the change device page
     //2 Verify   User should be able to see current version of heartOS and update button
@@ -22,10 +22,6 @@ public class RegressionTestSettingsPage extends TestBase{
     //6 Verify   User should be able to see Current SoftwareVersion
     //7 Verify   User should be able to see and select Standart vessel types and are they changable?
     //8 Verify   User should be able to change Date Time format
-
-
-
-
 
 
     LoginPage loginPage = new LoginPage();
@@ -43,26 +39,27 @@ public class RegressionTestSettingsPage extends TestBase{
 // Regression 2 Step 1 Visible Device which previously connected
 // Assertion 44 Should User able see previously connected device is visible in the change device page
 
-    public void Regression2Step1 () throws InterruptedException {
+    public void Regression2Step1() throws InterruptedException {
 
         BrowserUtils.waitFor(3);
-        loginPage.LoginIn(ConfigurationReader.get("username"),ConfigurationReader.get("password"));
+        loginPage.LoginIn(ConfigurationReader.get("username"), ConfigurationReader.get("password"));
         BrowserUtils.waitFor(2);
         dashBoardPage.settings();
         settings.changeDevice();
 
         WebElement ChangeDevicePage = Driver.getDriver().findElementByClassName("ChangeDeviceView");
         WebElement ChangeDevicePageWithTabControl = ChangeDevicePage.findElement(By.className("TabControl"));
-        Assert.assertTrue(Driver.getDriver().findElementByName("Device 1 (C-1911034)").isDisplayed());
-    // ChangeDevicePageWithTabControl.sendKeys(Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.ENTER);
+        Assert.assertTrue(Driver.getDriver().findElementByName("Device 3 (C-1911034)").isDisplayed());
+        // ChangeDevicePageWithTabControl.sendKeys(Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.TAB,Keys.ENTER);
         homePage.closeButtonOnly();
 
 
     }
+
     @Test
     // Regression 2 Step 2 Current version of heartOS displayed
 // Assertion 59 Should User able see current version of heartOS
-    public  void Regression2Step2 () throws InterruptedException {
+    public void Regression2Step2() throws InterruptedException {
 
 
         settings.HeartOSVersion();
@@ -72,37 +69,38 @@ public class RegressionTestSettingsPage extends TestBase{
         homePage.closeButtonOnly();
 
     }
-@Test
+
+    @Test
 
 // Regression 2 Step 3 Storage
 // Assertion 80 -84 Should User able to change storages and are they visible
     public void Regression2Step3() throws InterruptedException {
 
+        WebElement settingsPage = Driver.getDriver().findElementByAccessibilityId("Control");
+        BrowserUtils.waitFor(1);
+        WebElement ds = settingsPage.findElement(By.className("ComboBox"));
+        //   System.out.println(ds.size());
+        //  ds.get(1).click();
+        ds.click();
+        BrowserUtils.waitFor(1);
+        settings.ExternalDisk();
+        // System.out.println(ds.get(1).getText());
+        Assert.assertEquals("ExternalDisk", ds.getText());
+        ds.click();
+        BrowserUtils.waitFor(1);
+        settings.LocalStorage();
+        System.out.println(ds.getText());
+        Assert.assertEquals("LocalStorage", ds.getText());
 
-    BrowserUtils.waitFor(1);
-    List <WebElement> ds = Driver.getDriver().findElementsByClassName("ComboBox");
- //   System.out.println(ds.size());
-   ds.get(1).click();
-   // ds.click();
-    BrowserUtils.waitFor(1);
-    settings.ExternalDisk();
-   // System.out.println(ds.get(1).getText());
-    Assert.assertEquals("ExternalDisk", ds.get(1).getText());
-    ds.get(1).click();
-    BrowserUtils.waitFor(1);
-    settings.LocalStorage();
-    System.out.println(ds.get(1).getText());
-    Assert.assertEquals("LocalStorage", ds.get(1).getText());
 
+        //   settings.DefaultStorage();
+    }
 
-    //   settings.DefaultStorage();
-}
     @Test
     // Regression 2 Step 4 SystemPlacement
 // Assertion 111 Should User able see System Placement which located homepage
 
     public void Regression2Step4() throws InterruptedException {
-
 
 
         settings.SystemPlacement();
@@ -118,27 +116,27 @@ public class RegressionTestSettingsPage extends TestBase{
         Assert.assertTrue(SeemsUser.isDisplayed());
 
     }
-@Test
+
+    @Test
 
 // Regression 2 Step 5 AnalysisFolder
 // Assertion 128 Should User able Select Analysis Folder
 
-public void Regression2Step5() throws InterruptedException {
+    public void Regression2Step5() throws InterruptedException {
 
 
-    BrowserUtils.waitFor(2);
-    dashBoardPage.settings();
+        BrowserUtils.waitFor(2);
+        dashBoardPage.settings();
 
-    settings.Analysis();
+        settings.Analysis();
 
-    Assert.assertTrue(Driver.getDriver().findElementByName("Select").isDisplayed());
-}
+        Assert.assertTrue(Driver.getDriver().findElementByName("Select").isDisplayed());
+    }
 
     @Test
     // Regression 2 Step 6 SoftwareVersionIsDisplayed
 // Assertion 141 Should User able see Current SoftwareVersion
-    public  void Regression2Step6 () throws InterruptedException {
-
+    public void Regression2Step6() throws InterruptedException {
 
 
         settings.SoftwareVersionIsDisplayed();  // Assertion in the method
@@ -149,7 +147,7 @@ public void Regression2Step5() throws InterruptedException {
     @Test
     // Regression 2 Step 7 Change the Standard vessel types
 // Assertion 141 Should User able see Standart vessel types and are they changable?
-    public  void Regression2Step7 () throws InterruptedException {
+    public void Regression2Step7() throws InterruptedException {
 
 
         settings.ChangeStandartVesse();
@@ -164,18 +162,48 @@ public void Regression2Step5() throws InterruptedException {
         homePage.closeButtonOnly();
 
 
+    }
+
+    @Test
+    // Regression 2 Step 8 Change Date Time format
+// Assertion 179-180 Should User able to change Date Time format?
+    public void Regression2Step8() throws InterruptedException {
+
+
+        settings.DateTimeFormat();
+        Assert.assertTrue(Driver.getDriver().findElementByAccessibilityId("DateFormatID").isDisplayed());
+        Assert.assertTrue(Driver.getDriver().findElementByAccessibilityId("TimeFormatID").isDisplayed());
+
 
     }
 
     @Test
     // Regression 2 Step 8 Change Date Time format
 // Assertion 179-180 Should User able to change Date Time format?
-    public  void Regression2Step8 () throws InterruptedException {
+    public void Regression2Step9and10and11and12() throws InterruptedException {
 
+        Driver.getDriver().findElementByAccessibilityId("ChangeWifi").click();
+        WebElement enable = Driver.getDriver().findElementByName("Enable");
 
-        settings.DateTimeFormat();
-        Assert.assertTrue(Driver.getDriver().findElementByAccessibilityId("DateFormatID").isDisplayed());
-        Assert.assertTrue(Driver.getDriver().findElementByAccessibilityId("TimeFormatID").isDisplayed());
+        Assert.assertTrue(enable.isEnabled());
+        homePage.closeButtonOnly();
+
+        Driver.getDriver().findElementByAccessibilityId("ShutDownButton").click();
+
+        WebElement wholeShutDownAndReboot = Driver.getDriver().findElementByClassName("PowerManagementView");
+        List<WebElement> shutdownAndReboot = wholeShutDownAndReboot.findElements(By.className("Button"));
+
+        System.out.println(shutdownAndReboot.size());
+        Assert.assertTrue(shutdownAndReboot.get(0).isEnabled());
+        Assert.assertTrue(shutdownAndReboot.get(1).isEnabled());
+        shutdownAndReboot.get(0).click();
+        homePage.getNoButton();
+        Driver.getDriver().findElementByAccessibilityId("ShutDownButton").click();
+        BrowserUtils.waitFor(2);
+        wholeShutDownAndReboot = Driver.getDriver().findElementByClassName("PowerManagementView");
+        shutdownAndReboot = wholeShutDownAndReboot.findElements(By.className("Button"));
+        shutdownAndReboot.get(1).click();
+        homePage.getNoButton();
 
 
 

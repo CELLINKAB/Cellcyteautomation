@@ -36,10 +36,10 @@ public class RegressionTestViewExportImage extends TestBase  {
       //  wholePage.sendKeys(Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB, Keys.TAB,Keys.PAGE_DOWN,Keys.PAGE_DOWN,Keys.PAGE_DOWN,Keys.PAGE_DOWN
       //          ,Keys.PAGE_DOWN,Keys.PAGE_DOWN ,Keys.PAGE_DOWN,Keys.PAGE_DOWN,Keys.ENTER);
         BrowserUtils.waitFor(1);
-        studiesPage.studiesName("Cells 3");
+        studiesPage.studiesName("96 rgb");
 
-        WebElement NPTEST1 = Driver.getDriver().findElementByName("Cells 3");
-        Assert.assertEquals(NPTEST1.getText(),"Cells 3");
+        WebElement NPTEST1 = Driver.getDriver().findElementByName("96 rgb");
+        Assert.assertEquals(NPTEST1.getText(),"96 rgb");
 
 
 
